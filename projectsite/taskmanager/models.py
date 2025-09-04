@@ -15,7 +15,7 @@ class Priority(BaseModel):
 
 class Category(BaseModel):
     name = models.CharField(max_length=150)
-    
+
     def __str__(self):
         return self.name
 
@@ -32,11 +32,7 @@ class Task(BaseModel):
     )
 
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
-    priority = models.ForeignKey(Priority, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.title
-
+    priority = models.ForeignKey(Priority, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
