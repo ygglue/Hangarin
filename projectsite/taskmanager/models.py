@@ -10,11 +10,19 @@ class BaseModel(models.Model):
 class Priority(BaseModel):
     name = models.CharField(max_length=150)
 
+    class Meta:
+        verbose_name = "Priority"
+        verbose_name_plural = "Priorities"
+
     def __str__(self):
         return self.name
 
 class Category(BaseModel):
     name = models.CharField(max_length=150)
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.name
@@ -54,6 +62,9 @@ class SubTask(BaseModel):
             ("Completed", "Completed"),
         ], default="pending"
     )
-
+    class Meta:
+            verbose_name = "SubTask"
+            verbose_name_plural = "SubTasks"
+    
     def __str__(self):
         return self.title
