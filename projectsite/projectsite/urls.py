@@ -29,7 +29,11 @@ from taskmanager.views import (HomePageView,
                                NoteList,
                                NoteCreateView,
                                NoteUpdateView,
-                               NoteDeleteView
+                               NoteDeleteView,
+                               CategoryList,
+                               CategoryCreateView,
+                               CategoryUpdateView,
+                               CategoryDeleteView
                                )
 
 urlpatterns = [
@@ -50,4 +54,9 @@ urlpatterns = [
     path('note_list/add', NoteCreateView.as_view(), name='note-add'),
     path('note_list/<pk>', NoteUpdateView.as_view(), name='note-update'),
     path('note_list/<pk>/delete', NoteDeleteView.as_view(), name='note-delete'),
+
+    path('category_list', CategoryList.as_view(), name='category-list'),
+    path('category_list/add', CategoryCreateView.as_view(), name='category-add'),
+    path('category_list/<pk>', CategoryUpdateView.as_view(), name='category-update'),
+    path('category_list/<pk>/delete', CategoryDeleteView.as_view(), name='category-delete'),
 ]

@@ -35,7 +35,7 @@
                                         <th scope="col">Title</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Parent Task</th>
-                                        <th scope="col">Action</th>
+                                        <th class="text-right" scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -43,7 +43,7 @@
                                         <th scope="col">Title</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Parent Task</th>
-                                        <th scope="col">Action</th>
+                                        <th class="text-right" scope="col">Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -52,7 +52,7 @@
                                         <td>{{ object.title }}</td>
                                         <td>{{ object.status }}</td>
                                         <td>{{ object.parent_task }}</td>
-                                        <td>
+                                        <td class="text-right">
                                             <a class="btn btn-warning btn-circle btn-sm" href="subtask_list/{{ object.id }}">
                                                 <i class="fas fa-wrench"></i>
                                             </a>

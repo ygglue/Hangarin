@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">List of Tasks</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">List of Categories</h6>
                     </div>
                     <br />
                     <div class="col-md-12 row">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="pull-right">
-                                <a href="{% url 'task-add' %}" class="btn btn-success btn-rounded">Add Task</a>
+                                <a href="{% url 'category-add' %}" class="btn btn-success btn-rounded">Add Category</a>
                             </div>
                         </div>
                     </div>
@@ -32,37 +32,25 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Deadline</th>
-                                        <th scope="col">Priority</th>
-                                        <th scope="col">Category</th>
+                                        <th scope="col">Name</th>
                                         <th class="text-right" scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Deadline</th>
-                                        <th scope="col">Priority</th>
-                                        <th scope="col">Category</th>
+                                        <th scope="col">Name</th>
                                         <th class="text-right" scope="col">Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
                                     {% for object in object_list %}
                                     <tr>
-                                        <td>{{ object.title }}</td>
-                                        <td>{{ object.status }}</td>
-                                        <td>{{ object.deadline }}</td>
-                                        <td>{{ object.priority }}</td>
-                                        <td>{{ object.category }}</td>
+                                        <td>{{ object.name }}</td>
                                         <td class="text-right">
-                                            <a class="btn btn-warning btn-circle btn-sm" href="task_list/{{ object.id }}">
+                                            <a class="btn btn-warning btn-circle btn-sm" href="category_list/{{ object.id }}">
                                                 <i class="fas fa-wrench"></i>
                                             </a>
-                                            <a class="btn btn-danger btn-circle btn-sm" href="task_list/{{ object.id }}/delete">
+                                            <a class="btn btn-danger btn-circle btn-sm" href="category_list/{{ object.id }}/delete">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>

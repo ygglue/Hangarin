@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from taskmanager.models import Task, SubTask, Note
-from taskmanager.forms import TaskForm, SubTaskForm, NoteForm
+from taskmanager.models import Task, SubTask, Note, Category
+from taskmanager.forms import TaskForm, SubTaskForm, NoteForm, CategoryForm
 from django.urls import reverse_lazy
 
 class HomePageView(ListView):
@@ -83,3 +83,28 @@ class NoteDeleteView(DeleteView):
     model = Note
     template_name = 'note_del.html'
     success_url = reverse_lazy('note-list')
+
+
+# ====================================================   CATEGORY
+class CategoryList(ListView):
+    model = Category
+    context_object_name = 'category'
+    template_name = 'category_list.html'
+    paginate_by = 5
+
+class CategoryCreateView(CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'category_form.html'
+    success_url = reverse_lazy('category-list')
+
+class CategoryUpdateView(UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'category_form.html'
+    success_url = reverse_lazy('category-list')
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'category_del.html'
+    success_url = reverse_lazy('category-list')
