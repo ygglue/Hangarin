@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from taskmanager import views
-from taskmanager.views import HomePageView, TaskList
+from taskmanager.views import HomePageView, TaskList, TaskCreateView, TaskUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePageView.as_view(), name='home'),
     path('task_list', TaskList.as_view(), name='task-list'),
+    path('task_list/add', TaskCreateView.as_view(), name='task-add'),
+    path('task_list/<pk>', TaskUpdateView.as_view(), name='task-update'),
 ]

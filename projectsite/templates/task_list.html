@@ -1,37 +1,78 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="content">
     <div class="container-fluid">
-        <h4 class="page-title">Tasks</h4>
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">List of Tasks</div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">List of Tasks</h6>
+                    </div>
+                    <br />
+                    <div class="col-md-12 row">
+                        <div class="col-md-6">
+                            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Search ..." class="form-control" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pull-right">
+                                <a href="{% url 'task-add' %}" class="btn btn-success btn-rounded">Add Task</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped mt-3">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Deadline</th>
-                                    <th scope="col">Priority</th>
-                                    <th scope="col">Category</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for object in object_list %}
-                                <tr>
-                                    <td>{{ object.title }}</td>
-                                    <td>{{ object.status }}</td>
-                                    <td>{{ object.deadline }}</td>
-                                    <td>{{ object.priority }}</td>
-                                    <td>{{ object.category }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        {% include 'includes/pagination.html' %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Deadline</th>
+                                        <th scope="col">Priority</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Deadline</th>
+                                        <th scope="col">Priority</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for object in object_list %}
+                                    <tr>
+                                        <td>{{ object.title }}</td>
+                                        <td>{{ object.status }}</td>
+                                        <td>{{ object.deadline }}</td>
+                                        <td>{{ object.priority }}</td>
+                                        <td>{{ object.category }}</td>
+                                        <td><a class="btn btn-warning btn-circle" href="task_list/{{ object.id }}">
+                                            <i class="fas fa-wrench"></i>
+                                        </a></td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="4" style="text-align: center">
+                                            <p class="text-sm font-weight-bold mb-0">No Records Found</p>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% include 'includes/pagination.html' %}
+                        </div>
                     </div>
                 </div>
             </div>
