@@ -65,6 +65,7 @@ class SubTask(BaseModel):
     class Meta:
             verbose_name = "SubTask"
             verbose_name_plural = "SubTasks"
+            ordering = ['title']
     
     def __str__(self):
         return self.title
