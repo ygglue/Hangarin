@@ -59,7 +59,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Tasks</span>
+                    <span>To-Do</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -73,10 +73,17 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'note-list' %}">
                     <i class="fas fa-fw fa-comments"></i>
                     <span>Notes</span></a>
             </li>
+
+            <hr class="sidebar-divider">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Task Categorization
+            </div>
 
             <li class="nav-item">
                 <a class="nav-link" href="index.html">

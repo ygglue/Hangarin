@@ -25,7 +25,11 @@ from taskmanager.views import (HomePageView,
                                SubTaskList,
                                SubTaskCreateView,
                                SubTaskUpdateView,
-                               SubTaskDeleteView
+                               SubTaskDeleteView,
+                               NoteList,
+                               NoteCreateView,
+                               NoteUpdateView,
+                               NoteDeleteView
                                )
 
 urlpatterns = [
@@ -41,4 +45,9 @@ urlpatterns = [
     path('subtask_list/add', SubTaskCreateView.as_view(), name='subtask-add'),
     path('subtask_list/<pk>', SubTaskUpdateView.as_view(), name='subtask-update'),
     path('subtask_list/<pk>/delete', SubTaskDeleteView.as_view(), name='subtask-delete'),
+
+    path('note_list', NoteList.as_view(), name='note-list'),
+    path('note_list/add', NoteCreateView.as_view(), name='note-add'),
+    path('note_list/<pk>', NoteUpdateView.as_view(), name='note-update'),
+    path('note_list/<pk>/delete', NoteDeleteView.as_view(), name='note-delete'),
 ]
