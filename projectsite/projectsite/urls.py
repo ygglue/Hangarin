@@ -33,7 +33,11 @@ from taskmanager.views import (HomePageView,
                                CategoryList,
                                CategoryCreateView,
                                CategoryUpdateView,
-                               CategoryDeleteView
+                               CategoryDeleteView,
+                               PriorityList,
+                               PriorityCreateView,
+                               PriorityUpdateView,
+                               PriorityDeleteView
                                )
 
 urlpatterns = [
@@ -59,4 +63,9 @@ urlpatterns = [
     path('category_list/add', CategoryCreateView.as_view(), name='category-add'),
     path('category_list/<pk>', CategoryUpdateView.as_view(), name='category-update'),
     path('category_list/<pk>/delete', CategoryDeleteView.as_view(), name='category-delete'),
+
+    path('priority_list', PriorityList.as_view(), name='priority-list'),
+    path('priority_list/add', PriorityCreateView.as_view(), name='priority-add'),
+    path('priority_list/<pk>', PriorityUpdateView.as_view(), name='priority-update'),
+    path('priority_list/<pk>/delete', PriorityDeleteView.as_view(), name='priority-delete'),
 ]
