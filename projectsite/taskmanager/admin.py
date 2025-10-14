@@ -18,7 +18,7 @@ class NoteInline(admin.StackedInline):
     readonly_fields = ("created_at",)
 
 @admin.register(Task)
-class NoteAdmin(admin.ModelAdmin):
+class TaskAdmin(admin.ModelAdmin):
     list_display = ("title", "status", "deadline", "priority", "category")
     search_fields = ("title", "description",)
     list_filter = ("status", "priority", "category")

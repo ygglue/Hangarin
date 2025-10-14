@@ -4,11 +4,34 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from taskmanager.models import Task, SubTask, Note, Category, Priority
 from taskmanager.forms import TaskForm, SubTaskForm, NoteForm, CategoryForm, PriorityForm
 from django.urls import reverse_lazy
+from django.db.models import Q
+from django.utils import timezone
 
 class HomePageView(ListView):
     model = Task
     context_object_name = 'home'
     template_name = "home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["total_notes"] = Note.objects.count()
+        context["total_subtasks"] = SubTask.objects.count()
+
+        count = Task.objects.count()
+        completed_tasks = Task.objects.filter(
+            status="Completed"
+        ).count()
+
+        percentage_done=0
+
+        if count > 0:
+            percentage_done = (completed_tasks / count) * 100
+        else:
+            percentage_done = 0
+        
+        context["total_tasks"] = count
+        context["tasks_done"] = percentage_done
+        return context
 
 # ====================================================   TASK
 class TaskList(ListView):
@@ -16,6 +39,24 @@ class TaskList(ListView):
     context_object_name = 'task'
     template_name = 'task_list.html'
     paginate_by = 5
+
+    def get_ordering(self):
+        allowed = ["status", "priority", "category"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by
+        return "status"
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(title__icontains=query) |
+                Q(description__icontains=query)
+            )
+        return qs
 
 class TaskCreateView(CreateView):
     model = Task
@@ -41,6 +82,7 @@ class SubTaskList(ListView):
     context_object_name = 'subtask'
     template_name = 'subtask_list.html'
     paginate_by = 5
+    ordering = ["status", ]
 
 class SubTaskCreateView(CreateView):
     model = SubTask
@@ -66,6 +108,7 @@ class NoteList(ListView):
     context_object_name = 'note'
     template_name = 'note_list.html'
     paginate_by = 5
+    ordering = ["created_at", ]
 
 class NoteCreateView(CreateView):
     model = Note
