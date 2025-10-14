@@ -84,6 +84,16 @@ class SubTaskList(ListView):
     paginate_by = 5
     ordering = ["status", ]
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(title__icontains=query)
+            )
+        return qs
+
 class SubTaskCreateView(CreateView):
     model = SubTask
     form_class = SubTaskForm
@@ -109,6 +119,16 @@ class NoteList(ListView):
     template_name = 'note_list.html'
     paginate_by = 5
     ordering = ["created_at", ]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(content__icontains=query)
+            )
+        return qs
 
 class NoteCreateView(CreateView):
     model = Note
