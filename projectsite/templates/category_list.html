@@ -9,16 +9,18 @@
                     </div>
                     <br />
                     <div class="col-md-12 row">
-                        <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'category-list' %}">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search ..." class="form-control" name="q" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
+                        <div class="col-md-6">
+                            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'category-list' %}">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Search ..." class="form-control" name="q" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                         <div class="col-md-6">
                             <div class="pull-right">
                                 <a href="{% url 'category-add' %}" class="btn btn-success btn-rounded">Add Category</a>
