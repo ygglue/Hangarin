@@ -5,6 +5,15 @@ self.addEventListener('install', function(e) {
                     '/',
                     '/static/css/bootstrap.min.css',
                     '/static/js/main.js',
+                    '/static/css/sb-admin-2.min.css',
+                    '/static/vendor/fontawesome-free/css/all.min.css',
+                    '/static/vendor/jquery/jquery.min.js',
+                    '/static/vendor/bootstrap/js/bootstrap.bundle.min.js',
+                    '/static/vendor/jquery-easing/jquery.easing.min.js',
+                    '/static/js/sb-admin-2.min.js',
+                    '/static/vendor/chart.js/Chart.min.js',
+                    '/static/js/demo/chart-area-demo.js',
+                    '/static/js/demo/chart-pie-demo.js',
                 ]);
             })
         );
