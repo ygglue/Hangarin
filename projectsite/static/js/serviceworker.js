@@ -10,9 +10,6 @@ self.addEventListener('install', function(e) {
                     '/static/vendor/bootstrap/js/bootstrap.bundle.min.js',
                     '/static/vendor/jquery-easing/jquery.easing.min.js',
                     '/static/js/sb-admin-2.min.js',
-                    '/static/vendor/chart.js/Chart.min.js',
-                    '/static/js/demo/chart-area-demo.js',
-                    '/static/js/demo/chart-pie-demo.js',
                     '/static/img/clipboard-icon.png'
                 ]);
             })
