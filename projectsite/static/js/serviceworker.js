@@ -4,7 +4,6 @@ self.addEventListener('install', function(e) {
                 return cache.addAll([
                     '/',
                     '/static/css/bootstrap.min.css',
-                    '/static/js/main.js',
                     '/static/css/sb-admin-2.min.css',
                     '/static/vendor/fontawesome-free/css/all.min.css',
                     '/static/vendor/jquery/jquery.min.js',
