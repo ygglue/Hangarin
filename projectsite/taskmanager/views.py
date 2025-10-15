@@ -156,6 +156,16 @@ class CategoryList(LoginRequiredMixin, ListView):
     template_name = 'category_list.html'
     paginate_by = 5
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(name__icontains=query)
+            )
+        return qs
+
 class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
@@ -180,6 +190,16 @@ class PriorityList(LoginRequiredMixin, ListView):
     context_object_name = 'priority'
     template_name = 'priority_list.html'
     paginate_by = 5
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(name__icontains=query)
+            )
+        return qs
 
 class PriorityCreateView(LoginRequiredMixin, CreateView):
     model = Priority
